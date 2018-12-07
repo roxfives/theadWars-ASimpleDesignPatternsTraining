@@ -1,5 +1,8 @@
 package armies.attacker;
 
+/**
+ * The visitor the General uses to get information about the attacking fleet with strategist
+ */
 public class StrategistVisitor {
     private int nPlanes;
 

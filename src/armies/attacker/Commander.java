@@ -1,5 +1,8 @@
 package armies.attacker;
 
+/**
+ * The commander responds directly to the emperor
+ */
 public class Commander implements Attacker {
     private Commander() { }
 

@@ -3,13 +3,14 @@ package armies.defender;
 import armies.Fleet;
 import board.BattleField;
 import machinery.MachineType;
-import machinery.Plane;
 import machinery.WarProfiteer;
 import machinery.WarUnit;
 
-import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * A class which corresponds to a defending fleet
+ */
 public class DefenseFleet extends Fleet {
     private int nPlanes;
 
@@ -23,6 +24,7 @@ public class DefenseFleet extends Fleet {
         this.nShips = nShips;
     }
 
+    // The method to be ran by the defending fleet's thread
     @Override
     public void run() {
         int iPlane = 0;
@@ -30,9 +32,11 @@ public class DefenseFleet extends Fleet {
         int iShip = 0;
 
         System.out.println("Running defense fleet");
+        // While there are war units and the other hasn't lost
         while((this.nPlanes > 0 || this.nBaseLand > 0 || this.nShips > 0) && BattleField.getInstance().isFighting()) {
+            // Generates the war unit
             MachineType type = this.requestWarUnit();
-            WarUnit warUnit = WarProfiteer.getInstance().getWarMachine(type);
+            WarUnit warUnit = WarProfiteer.getInstance().getWarMachine(type); // Requests war unit from object pool
 
             while(warUnit.getLife() > 0 && BattleField.getInstance().isFighting()) {
                 switch (warUnit.getClass().getSimpleName()) {
@@ -52,8 +56,8 @@ public class DefenseFleet extends Fleet {
                 BattleField.getInstance().defend(warUnit);
             }
 
-            WarProfiteer.getInstance().returnWarMachine(warUnit);
-            switch (warUnit.getClass().getSimpleName()) {
+            WarProfiteer.getInstance().returnWarMachine(warUnit); // Returns war unit to object pool
+            switch (warUnit.getClass().getSimpleName()) { // An id for each war unit
                 case "Plane":
                     iPlane++;
                     break;
@@ -73,6 +77,7 @@ public class DefenseFleet extends Fleet {
         System.out.println("Defender has " + ((this.nPlanes == 0 && this.nBaseLand == 0 && this.nShips == 0)? "lost" : "won"));
     }
 
+    // The method that decides which war unit will fight next
     @Override
     protected MachineType requestWarUnit() {
         Random random = new Random();

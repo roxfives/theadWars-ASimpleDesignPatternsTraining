@@ -2,10 +2,13 @@ package armies.attacker.command_handle;
 
 import armies.attacker.Attacker;
 
+/**
+ * The first handler in the chain of responsibility
+ */
 public class EmperorHandle extends Handle {
 
-    public EmperorHandle(Attacker jap) {
-        super(jap);
+    public EmperorHandle(Attacker attacker) {
+        super(attacker);
     }
 
     @Override

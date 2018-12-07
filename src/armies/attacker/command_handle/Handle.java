@@ -2,6 +2,9 @@ package armies.attacker.command_handle;
 
 import armies.attacker.Attacker;
 
+/**
+ * The class a handler in the chain of responsibility must implement
+ */
 public abstract class Handle {
     protected Handle next;
 

@@ -8,6 +8,9 @@ import machinery.WarUnit;
 
 import java.util.Random;
 
+/**
+ * A class which corresponds to an attacking fleet
+ */
 public class AttackFleet extends Fleet {
     private int nPlanes;
 
@@ -21,6 +24,7 @@ public class AttackFleet extends Fleet {
         this.nShips = nShips;
     }
 
+    // The method to be ran by the attacking fleet's thread
     @Override
     public void run() {
         int iPlane = 0;
@@ -28,10 +32,13 @@ public class AttackFleet extends Fleet {
         int iShip = 0;
 
         System.out.println("Attack fleet running");
+        // While there are war units and the other hasn't lost
         while((this.nPlanes > 0 || this.nKamikazes > 0 || this.nShips > 0) && BattleField.getInstance().isFighting()) {
+            // Generates the war unit
             MachineType type = this.requestWarUnit();
-            WarUnit warUnit = WarProfiteer.getInstance().getWarMachine(type);
+            WarUnit warUnit = WarProfiteer.getInstance().getWarMachine(type); // Requests war unit from object pool
 
+            // While the unit is still up and the other fleet hasn't lost
             while(warUnit.getLife() > 0 && BattleField.getInstance().isFighting()) {
                 switch (warUnit.getClass().getSimpleName()) {
                     case "Plane":
@@ -50,8 +57,8 @@ public class AttackFleet extends Fleet {
                 BattleField.getInstance().attack(warUnit);
             }
 
-            WarProfiteer.getInstance().returnWarMachine(warUnit);
-            switch (warUnit.getClass().getSimpleName()) {
+            WarProfiteer.getInstance().returnWarMachine(warUnit); // Returns war unit to object pool
+            switch (warUnit.getClass().getSimpleName()) { // An id for each war unit
                 case "Plane":
                     iPlane++;
                     break;
@@ -70,6 +77,7 @@ public class AttackFleet extends Fleet {
         System.out.println("Attacker has " + ((this.nPlanes == 0 && this.nKamikazes == 0 && this.nShips == 0)? "lost" : "won"));
     }
 
+    // The method that decides which war unit will fight next
     @Override
     protected MachineType requestWarUnit() {
         Random random = new Random();

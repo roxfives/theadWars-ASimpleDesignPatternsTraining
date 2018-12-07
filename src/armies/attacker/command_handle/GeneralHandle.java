@@ -15,9 +15,8 @@ public class GeneralHandle extends Handle {
             System.out.println("General received the commander's command to wage war");
 
             General general = (General) this.getResponsible();
-
-            general.planAttack();
-            general.sendFleet();
+            general.planAttack(); // Plans the attack with strategist
+            general.sendFleet(); // Initiates attack
         }
     }
 }

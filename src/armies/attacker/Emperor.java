@@ -5,7 +5,7 @@ import armies.attacker.command_handle.EmperorHandle;
 import armies.attacker.command_handle.GeneralHandle;
 
 /**
- * The emperor is the head of the chain of responsibility
+ * The emperor is the head of the attackers
  */
 public class Emperor implements Attacker {
     private Emperor() { }

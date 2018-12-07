@@ -2,13 +2,10 @@ package armies.attacker;
 
 import java.util.Random;
 
+/**
+ * The strategist is responsible for generating the information used for creating the attacking fleet
+ */
 public class Strategist implements Attacker {
-    private static int nPlanes;
-
-    private static int nKamikazes;
-
-    private static int nShips;
-
     private Strategist() { }
 
     private static class StrategistHolder {
@@ -19,6 +16,7 @@ public class Strategist implements Attacker {
         return StrategistHolder.STRATEGIST;
     }
 
+    // The method that accepts the visitor
     public static void accept(StrategistVisitor visitor) {
         Random random = new Random();
 

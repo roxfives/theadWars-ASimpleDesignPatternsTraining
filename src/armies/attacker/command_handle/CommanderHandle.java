@@ -13,7 +13,7 @@ public class CommanderHandle extends Handle {
     public void execute(Handle boss) {
         if(boss.getResponsible() instanceof Emperor) {
             System.out.println("Commander received the emperor's command to wage war");
-            this.next.execute(this);
+            this.next.execute(this); // Passes the command down the chain
         }
     }
 }

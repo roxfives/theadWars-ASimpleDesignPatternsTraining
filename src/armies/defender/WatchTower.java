@@ -5,6 +5,9 @@ import board.BattleField;
 
 import java.util.Random;
 
+/**
+ * The defender's WatchTower is responsible for managing the defense
+ */
 public class WatchTower implements Defender {
     private DefenseFleet defenseFleet;
 
@@ -18,6 +21,7 @@ public class WatchTower implements Defender {
         return GeneralHolder.WATCH_TOWER;
     }
 
+    // This method starts up the defense
     public void defenseUp() {
         System.out.println("Watch tower raising its defenses");
 
@@ -26,7 +30,7 @@ public class WatchTower implements Defender {
         int baseLands = random.nextInt(10) + 5;
         int ships = random.nextInt(10) + 5;
 
-        this.defenseFleet = (DefenseFleet) Fleet.createFleet(this, planes, baseLands, ships);
+        this.defenseFleet = (DefenseFleet) Fleet.createFleet(this, planes, baseLands, ships); // Uses a factory method to create the fleet
 
         System.out.println("Defense fleet has " + planes + " planes, " + baseLands + " base lands and " + ships + " ships");
         System.out.println();
