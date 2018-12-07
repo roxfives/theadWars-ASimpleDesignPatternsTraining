@@ -6,6 +6,9 @@ import armies.attacker.Attacker;
 import armies.defender.DefenseFleet;
 import machinery.WarUnit;
 
+/**
+ * A singleton used as a mediator between fighting war units
+ */
 public class BattleField {
     private AttackFleet attackFleet;
     private DefenseFleet defenseFleet;
@@ -55,6 +58,7 @@ public class BattleField {
         this.defender.start();
     }
 
+    // The attacking unit in the round calls this method
     public synchronized void attack(WarUnit unit) {
         if(!this.isFighting()) {
             return;
@@ -70,6 +74,7 @@ public class BattleField {
         }
     }
 
+    // The defending unit in the round calls this method
     public synchronized void defend(WarUnit unit) {
         if(!this.isFighting()) {
             return;
@@ -85,7 +90,7 @@ public class BattleField {
         }
     }
 
-
+    // The threads must go through this method so the round can be run
     private boolean tryRound() {
         if(this.attackerUnit != null && this.defenderUnit != null) {
             this.attackerUnit.takeDamage(this.defenderUnit.takeAttack(this.attackerUnit));

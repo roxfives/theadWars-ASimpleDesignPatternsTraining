@@ -3,13 +3,13 @@ package board;
 import armies.attacker.Emperor;
 import armies.defender.WatchTower;
 
-import java.util.Scanner;
-
+// The entry point of the application
 public class Application {
     public static void main(String[] args) {
-        WatchTower.getInstance().defenseUp();
-        Emperor.wageWar();
+        WatchTower.getInstance().defenseUp(); // Start defenses
+        Emperor.wageWar(); // The attack starts
 
+        // Starts war
         BattleField.getInstance().start();
     }
 }
