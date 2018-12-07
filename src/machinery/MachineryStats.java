@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * Class with constants used for calculating the values related with each kind of war unit
+ */
 public class MachineryStats {
     protected static final double PLANE_LIFE = 100.0;
     protected static final int PLANE_FIRE_POWER = 10;

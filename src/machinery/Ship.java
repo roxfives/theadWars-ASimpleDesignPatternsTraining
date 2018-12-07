@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * A war unit representing a ship
+ */
 public class Ship extends WarUnit {
     public Ship() {
         this.setMachineType(MachineType.SEA);

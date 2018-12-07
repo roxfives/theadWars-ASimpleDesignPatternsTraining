@@ -1,6 +1,8 @@
 package machinery;
 
-
+/**
+ * Any war unit must extend from this abstract class
+ */
 public abstract class WarUnit {
     private double life;
     private double originalLife;

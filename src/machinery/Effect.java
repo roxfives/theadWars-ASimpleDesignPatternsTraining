@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * Class with constants used for calculating the damage between fighting war units
+ */
 public class Effect {
     public static final double SOFT = 0.1;
     public static final double LITTLE = 0.2;

@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * A war unit representing a plane
+ */
 public class Plane extends WarUnit {
     public Plane() {
         this.setMachineType(MachineType.AIR);

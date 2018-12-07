@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * A war unit representing a kamikaze
+ */
 public class Kamikaze extends WarUnit {
     public Kamikaze() {
         this.setMachineType(MachineType.ONE_TIME_ONLY);

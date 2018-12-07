@@ -4,16 +4,23 @@ package machinery;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * A singleton used as an object pool for war units (for both sides)
+ */
 public class WarProfiteer {
+    // Planes repositories
     private Stack<Plane> availablePlanes = new Stack<>();
     private ArrayList<Plane> lockedPlanes = new ArrayList<>();
 
+    // Bases repositories
     private Stack<BaseLand> availableBaseLands = new Stack<>();
     private ArrayList<BaseLand> lockedBaseLands = new ArrayList<>();
 
+    // Kamikazes repositories
     private Stack<Kamikaze> availableKamikazes = new Stack<>();
     private ArrayList<Kamikaze> lockedKamikazes = new ArrayList<>();
 
+    // Ships repositories
     private Stack<Ship> availableShips = new Stack<>();
     private ArrayList<Ship> lockedShips = new ArrayList<>();
 
@@ -28,6 +35,7 @@ public class WarProfiteer {
         return WarProfiteerHolder.WAR_PROFITEER;
     }
 
+    // The method a thread must use to request a war unit
     public synchronized WarUnit getWarMachine(MachineType type) {
         switch (type) {
             case AIR:
@@ -83,6 +91,7 @@ public class WarProfiteer {
         }
     }
 
+    // The method a thread must use to give a war unit back
     public synchronized void returnWarMachine(WarUnit unit) {
         MachineType type = unit.getMachineType();
 

@@ -1,5 +1,8 @@
 package machinery;
 
+/**
+ * A war unit representing a base land
+ */
 public class BaseLand extends WarUnit {
     public BaseLand() {
         this.setMachineType(MachineType.LAND);
