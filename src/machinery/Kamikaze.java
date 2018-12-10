@@ -29,7 +29,7 @@ public class Kamikaze extends WarUnit {
     }
 
     @Override
-    protected void reset() {
+    public void reset() {
         this.setLife(MachineryStats.KAMIKAZE_LIFE);
         this.setFirepower(MachineryStats.KAMIKAZE_FIRE_POWER);
     }

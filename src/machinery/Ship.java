@@ -55,7 +55,7 @@ public class Ship extends WarUnit {
     }
 
     @Override
-    protected void reset() {
+    public void reset() {
         this.setLife(MachineryStats.SHIP_LIFE);
         this.setFirepower(MachineryStats.SHIP_FIRE_POWER);
     }

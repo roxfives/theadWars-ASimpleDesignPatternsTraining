@@ -41,5 +41,5 @@ public abstract class WarUnit {
 
     public abstract void takeDamage(double damage);
 
-    protected abstract void reset();
+    public abstract void reset();
 }

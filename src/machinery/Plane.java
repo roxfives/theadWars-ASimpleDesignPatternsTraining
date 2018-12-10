@@ -55,7 +55,7 @@ public class Plane extends WarUnit {
     }
 
     @Override
-    protected void reset() {
+    public void reset() {
         this.setLife(MachineryStats.PLANE_LIFE);
         this.setFirepower(MachineryStats.PLANE_FIRE_POWER);
     }

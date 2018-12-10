@@ -50,7 +50,7 @@ public class BaseLand extends WarUnit {
     }
 
     @Override
-    protected void reset() {
+    public void reset() {
         this.setLife(MachineryStats.BASE_LAND_LIFE);
         this.setFirepower(MachineryStats.BASE_LAND_FIRE_POWER);
     }
