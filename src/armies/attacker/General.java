@@ -29,7 +29,7 @@ public class General implements Attacker {
         System.out.println();
 
         // Uses a factory method to create the fleet
-        this.attackFleet = (AttackFleet) Fleet.createFleet(this, this.visitor.getNPlanes(), this.visitor.getNKamikazes(), this.visitor.getNShips());
+        this.attackFleet = AttackFleet.createFleet(this.visitor.getNPlanes(), this.visitor.getNKamikazes(), this.visitor.getNShips());
     }
 
     public void sendFleet() {

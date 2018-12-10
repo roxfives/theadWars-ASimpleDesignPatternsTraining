@@ -18,10 +18,14 @@ public class AttackFleet extends Fleet {
 
     private int nShips;
 
-    public AttackFleet(int nPlanes, int nKamikazes, int nShips) {
+    private AttackFleet(int nPlanes, int nKamikazes, int nShips) {
         this.nPlanes = nPlanes;
         this.nKamikazes = nKamikazes;
         this.nShips = nShips;
+    }
+
+    public static AttackFleet createFleet(int planes, int kamikazes, int ships) {
+        return new AttackFleet(planes, kamikazes, ships);
     }
 
     // The method to be ran by the attacking fleet's thread

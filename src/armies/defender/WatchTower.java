@@ -30,7 +30,7 @@ public class WatchTower implements Defender {
         int baseLands = random.nextInt(10) + 5;
         int ships = random.nextInt(10) + 5;
 
-        this.defenseFleet = (DefenseFleet) Fleet.createFleet(this, planes, baseLands, ships); // Uses a factory method to create the fleet
+        this.defenseFleet = DefenseFleet.createFleet(planes, baseLands, ships); // Uses a factory method to create the fleet
 
         System.out.println("Defense fleet has " + planes + " planes, " + baseLands + " base lands and " + ships + " ships");
         System.out.println();

@@ -18,10 +18,14 @@ public class DefenseFleet extends Fleet {
 
     private int nShips;
 
-    public DefenseFleet(int nPlanes, int nBaseLand, int nShips) {
+    private DefenseFleet(int nPlanes, int nBaseLand, int nShips) {
         this.nPlanes = nPlanes;
         this.nBaseLand = nBaseLand;
         this.nShips = nShips;
+    }
+
+    public static DefenseFleet createFleet(int planes, int baseLands, int ships) {
+        return new DefenseFleet(planes, baseLands, ships);
     }
 
     // The method to be ran by the defending fleet's thread
