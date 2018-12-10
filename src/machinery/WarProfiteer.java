@@ -10,7 +10,18 @@ import machinery.unitspool.ShipsPool;
  * A singleton used as an object pool for war units (for both sides)
  */
 public class WarProfiteer {
-    private WarProfiteer() { }
+    private final PlanesPool planesPool;
+    private final BaseLandsPool baseLandsPool;
+    private final KamikazesPool kamikazesPool;
+    private final ShipsPool shipsPool;
+
+
+    private WarProfiteer() {
+        this.planesPool = new PlanesPool();
+        this.baseLandsPool = new BaseLandsPool();
+        this.kamikazesPool = new KamikazesPool();
+        this.shipsPool = new ShipsPool();
+    }
 
     private static class WarProfiteerHolder {
         private static final WarProfiteer WAR_PROFITEER = new WarProfiteer();
@@ -24,16 +35,16 @@ public class WarProfiteer {
     public synchronized WarUnit getWarMachine(MachineType type) {
         switch (type) {
             case AIR:
-                return PlanesPool.getInstance().getWarMachine();
+                return this.planesPool.getWarMachine();
 
             case LAND:
-                return BaseLandsPool.getInstance().getWarMachine();
+                return this.baseLandsPool.getWarMachine();
 
             case ONE_TIME_ONLY:
-                return KamikazesPool.getInstance().getWarMachine();
+                return this.kamikazesPool.getWarMachine();
 
             case SEA:
-                return ShipsPool.getInstance().getWarMachine();
+                return this.shipsPool.getWarMachine();
 
             default:
                 return null;
@@ -47,19 +58,19 @@ public class WarProfiteer {
         unit.reset();
         switch (type) {
             case AIR:
-                PlanesPool.getInstance().returnWarMachine(unit);
+                this.planesPool.returnWarMachine(unit);
                 break;
 
             case LAND:
-                BaseLandsPool.getInstance().returnWarMachine(unit);
+                this.baseLandsPool.returnWarMachine(unit);
                 break;
 
             case ONE_TIME_ONLY:
-                KamikazesPool.getInstance().returnWarMachine(unit);
+                this.kamikazesPool.returnWarMachine(unit);
                 break;
 
             case SEA:
-                ShipsPool.getInstance().returnWarMachine(unit);
+                this.shipsPool.returnWarMachine(unit);
                 break;
         }
     }
