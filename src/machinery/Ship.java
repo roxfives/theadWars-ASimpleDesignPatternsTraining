@@ -44,6 +44,8 @@ public class Ship extends WarUnit {
 
         this.setLife(this.getLife() - (attackReceived * unit.getFirepower()));
 
+        System.out.println("Attack damage: " + attackReceived * unit.getFirepower() + "; Defense damage: " + attackGiven * this.getFirepower());
+
         return attackGiven * this.getFirepower();
     }
 

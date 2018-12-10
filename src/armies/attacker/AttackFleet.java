@@ -42,15 +42,15 @@ public class AttackFleet extends Fleet {
             while(warUnit.getLife() > 0 && BattleField.getInstance().isFighting()) {
                 switch (warUnit.getClass().getSimpleName()) {
                     case "Plane":
-                        System.out.println("Plane " + iPlane + " defending");
+                        System.out.println("Plane " + iPlane + " attacking");
                         break;
 
                     case "Kamikaze":
-                        System.out.println("Kamikaze " + iKamikaze + " defending");
+                        System.out.println("Kamikaze " + iKamikaze + " attacking");
                         break;
 
                     case "Ship":
-                        System.out.println("Ship " + iShip + " defending");
+                        System.out.println("Ship " + iShip + " attacking");
                         break;
                 }
 

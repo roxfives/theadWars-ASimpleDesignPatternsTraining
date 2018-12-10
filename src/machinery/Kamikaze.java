@@ -16,7 +16,10 @@ public class Kamikaze extends WarUnit {
 
         attackGiven = Effect.SUPER;
 
+        System.out.println("Attack damage: " + this.getLife() + "; Defense damage: " + attackGiven * this.getFirepower());
+
         this.setLife(0);
+
         return attackGiven * this.getFirepower();
     }
 
