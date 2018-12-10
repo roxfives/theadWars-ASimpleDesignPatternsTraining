@@ -65,13 +65,16 @@ public class BattleField {
         }
 
         this.attackerUnit = unit;
-        if(!tryRound()) {
+        while(this.defenderUnit == null && this.isFighting()) {
             try {
+                this.notifyAll();
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        this.notifyAll();
+        makeAttack();
     }
 
     // The defending unit in the round calls this method
@@ -81,28 +84,27 @@ public class BattleField {
         }
 
         this.defenderUnit = unit;
-        if(!tryRound()) {
+        while(this.attackerUnit == null && this.isFighting()) {
             try {
+                this.notifyAll();
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        this.notifyAll();
     }
 
     // The threads must go through this method so the round can be run
-    private boolean tryRound() {
-        if(this.attackerUnit != null && this.defenderUnit != null) {
+    private void makeAttack() {
+        if(this.isFighting()) {
             this.attackerUnit.takeDamage(this.defenderUnit.takeAttack(this.attackerUnit));
-            this.notifyAll();
 
             this.attackerUnit = null;
             this.defenderUnit = null;
 
             System.out.println();
-            return true;
-        }
 
-        return false;
+        }
     }
 }
